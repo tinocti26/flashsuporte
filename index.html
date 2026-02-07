@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOC Suporte</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #0b0f14;
+      color: #e5e7eb;
+    }
+    header, footer {
+      border-top: 2px solid #22d3ee;
+      border-bottom: 2px solid #22d3ee;
+      text-align: center;
+      padding: 14px;
+      font-weight: bold;
+      background: #020617;
+      color: #f8fafc;
+      letter-spacing: 1px;
+    }
+    main {
+      flex: 1;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .coluna {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .card {
+      border: 1px solid #22d3ee;
+      padding: 26px;
+      text-align: center;
+      background: #020617;
+      cursor: pointer;
+      transition: 0.25s;
+      border-radius: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .card:hover {
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.6);
+      transform: translateY(-3px);
+    }
+    .links {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-left: 2px solid #22d3ee;
+      background: #020617;
+      border-radius: 0 0 8px 8px;
+    }
+    .links a, .links button {
+      color: #67e8f9;
+      text-decoration: none;
+      font-size: 14px;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 8px 0;
+      cursor: pointer;
+    }
+    .links a:hover, .links button:hover {
+      text-decoration: underline;
+    }
+    .btn-ferramenta {
+      background: #1e293b;
+      border: 1px solid #22d3ee;
+      padding: 8px 12px;
+      border-radius: 4px;
+      color: #67e8f9;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-ferramenta:hover {
+      background: #22d3ee;
+      color: #0b0f14;
+      text-decoration: none !important;
+    }
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; }
+      .links iframe {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>NOC SUPORTE</header>
+
+  <main>
+    <div class="coluna">
+      <div class="card" onclick="toggleLinks('hub')">Hub Soft</div>
+      <div class="links" id="hub">
+        <a href="#">HubSoft Principal</a>
+        <a href="#">Clientes</a>
+        <a href="#">Financeiro</a>
+      </div>
+      
+      <div class="card" onclick="toggleLinks('senha')">SENHAS</div>
+      <div class="links" id="senha">
+
+        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
+        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
+        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
+
+      </div>
+      
+      <div class="card" onclick="toggleLinks('OLT')">OLT</div>
+      <div class="links" id="OLT">
+        <a href="#">OLT VLANS</a>
+        <button class="btn-ferramenta" onclick="abrir('https://vortxgroupsysten-bit.github.io/consulta-de-olt/')">📡 OLT IDENTIFICADOR</button>
+      </div>
+
+      <div class="card" onclick="toggleLinks('Curso')">Curso</div>
+      <div class="links" id="Curso">
+        <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/embed/tgbNymZ7vqY')">video 1</button>
+      </div>
+    </div>
+
+    <div class="coluna">
+      <div class="card" onclick="toggleLinks('monitor')">MONITORAMENTO</div>
+      <div class="links" id="monitor">
+        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">Potencia ONU</button>
+        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/FI-GAjBZaa/9-servicos-de-internet-downdetector?orgId=1&refresh=1m')">DOWNDETECTOR</button>
+        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">ENERGIA OLT</button>
+      </div>
+
+      <div class="card">Mensagens Rápidas</div>
+      <div class="card">Planos TCF</div>
+    </div>
+  </main>
+
+  <footer>NOC SUPORTE • SISTEMA INTERNO</footer>
+
+  <script>
+    function toggleLinks(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'flex' ? 'none' : 'flex';
+    }
+    
+    function abrir(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
