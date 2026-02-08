@@ -1,122 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOC Suporte</title>
-  <style>
-    * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: #0b0f14;
-      color: #e5e7eb;
-    }
-    header, footer {
-      border-top: 2px solid #22d3ee;
-      border-bottom: 2px solid #22d3ee;
-      text-align: center;
-      padding: 14px;
-      font-weight: bold;
-      background: #020617;
-      color: #f8fafc;
-      letter-spacing: 1px;
-    }
-    main {
-      flex: 1;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .coluna {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .card {
-      border: 1px solid #22d3ee;
-      padding: 26px;
-      text-align: center;
-      background: #020617;
-      cursor: pointer;
-      transition: 0.25s;
-      border-radius: 8px;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    .card:hover {
-      box-shadow: 0 0 14px rgba(34, 211, 238, 0.6);
-      transform: translateY(-3px);
-    }
-    .links {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-left: 2px solid #22d3ee;
-      background: #020617;
-      border-radius: 0 0 8px 8px;
-    }
-    .links a, .links button {
-      color: #67e8f9;
-      text-decoration: none;
-      font-size: 14px;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 8px 0;
-      cursor: pointer;
-    }
-    .links a:hover, .links button:hover {
-      text-decoration: underline;
-    }
-    .btn-ferramenta {
-      background: #1e293b;
-      border: 1px solid #22d3ee;
-      padding: 8px 12px;
-      border-radius: 4px;
-      color: #67e8f9;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-ferramenta:hover {
-      background: #22d3ee;
-      color: #0b0f14;
-      text-decoration: none !important;
-    }
-    @media (max-width: 900px) {
-      main { grid-template-columns: 1fr; }
-      .links iframe {
-        width: 100%;
-        height: 200px;
-      }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOC Suporte</title>
 
-       .credencial {
-        background: rgba(255,255,255,0.03);
-        padding: 8px 10px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-    }   
+<style>
+* { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
 
-    .linha {
-        font-size: 14px;
-        margin: 2px 0;
-    }
-
-    .links.show {
+body {
+  margin: 0;
+  min-height: 100vh;
   display: flex;
-    }
+  flex-direction: column;
+  background: #0b0f14;
+  color: #e5e7eb;
+}
 
-    #login-overlay {
+header, footer {
+  border-top: 2px solid #22d3ee;
+  border-bottom: 2px solid #22d3ee;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  background: #020617;
+  color: #f8fafc;
+}
+
+main {
+  flex: 1;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  border: 1px solid #22d3ee;
+  padding: 26px;
+  text-align: center;
+  background: #020617;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card:hover {
+  box-shadow: 0 0 14px rgba(34,211,238,.6);
+}
+
+.links {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: #020617;
+  border-left: 2px solid #22d3ee;
+  border-radius: 0 0 8px 8px;
+}
+
+.links.show { display: flex; }
+
+.credencial {
+  background: rgba(255,255,255,.03);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.linha { font-size: 14px; }
+
+.btn-ferramenta {
+  background: #1e293b;
+  border: 1px solid #22d3ee;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #67e8f9;
+  cursor: pointer;
+}
+
+#login-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.95);
+  background: rgba(2,6,23,.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,18 +102,6 @@
   border-radius: 12px;
   width: 300px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
-}
-
-.login-box h2 {
-  margin-bottom: 10px;
-  color: #67e8f9;
-}
-
-.login-box p {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #e5e7eb;
 }
 
 .login-box input {
@@ -153,200 +113,111 @@
   background: #0b0f14;
   color: #e5e7eb;
 }
-
-.login-box button {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  background: #22d3ee;
-  color: #020617;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-
-    
-  </style>
+</style>
 </head>
+
 <body>
 
-  <div id="login-overlay">
+<!-- LOGIN -->
+<div id="login-overlay">
   <div class="login-box">
     <h2>NOC SUPORTE</h2>
-    <p>Informe seu nome para continuar</p>
-
-    <input type="text" id="nomeUsuario" placeholder="Seu nome" />
+    <p>Informe seu nome</p>
+    <input id="nomeUsuario" placeholder="Seu nome">
     <button onclick="entrar()">Entrar</button>
   </div>
 </div>
 
+<header>NOC SUPORTE</header>
 
-  <header>NOC SUPORTE</header>
+<main>
 
-  <main>
-    <div class="coluna">
-      <div class="card" data-target="hub">Hub Soft</div>
-      <div class="links" id="hub">
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/dashboard')">HUB</button>
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/agenda_tecnico')">Agenda técnico</button>
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/ordem_servico/mapa')">mapa de OS</button>
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/mapeamento/cliente')">mapa de cliente</button>
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/cpe')">CPES e ONU</button>
-        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/equipamento_conexao')">OLTS HUB</button>
-      </div>
-        
-      <div class="card" data-target="senha">SENHAS</div>
-      <div class="links" id="senha">
+<!-- COLUNA ESQUERDA -->
+<div class="coluna">
 
-        <button class="card" data-target="huawei">HUAWEI</button>
+<div class="card menu-card" data-target="hub">HUB SOFT</div>
+<div class="links" id="hub">
+  <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/dashboard')">HUB</button>
+</div>
+
+<div class="card menu-card" data-target="senha">SENHAS</div>
+<div class="links" id="senha">
+
+<button class="card senha-btn" data-alvo="huawei">HUAWEI</button>
 <div class="links credencial" id="huawei">
   <div class="linha"><b>User:</b> Epadmin / telecomadmin</div>
   <div class="linha"><b>Senha:</b> 2amt0j1t8</div>
 </div>
 
-<button class="card" data-target="tplink">TP-LINK</button>
+<button class="card senha-btn" data-alvo="tplink">TP-LINK</button>
 <div class="links credencial" id="tplink">
   <div class="linha"><b>User:</b> superadmin</div>
   <div class="linha"><b>Senha:</b> tcfadmin001 / 2amt0j1t8</div>
 </div>
 
-<button class="card" data-target="datacom">DATACOM</button>
-<div class="links credencial" id="datacom">
-  <div class="linha"><b>User:</b> admin / user</div>
-  <div class="linha"><b>Senha:</b> 2amt0j1t8 / #TcFcnM@2019*98</div>
 </div>
 
-<button class="card" data-target="stavix">STAVIX UNEE</button>
-<div class="links credencial" id="stavix">
-  <div class="linha"><b>User:</b> admin / root</div>
-  <div class="linha"><b>Senha:</b> admin / 2amt0j1t8 / Changeme_123 / unee123</div>
 </div>
 
-<button class="card" data-target="multilaser">MULTILASER</button>
-<div class="links credencial" id="multilaser">
-  <div class="linha"><b>User:</b> adminisp</div>
-  <div class="linha"><b>Senha:</b> adminisp</div>
+<!-- COLUNA DIREITA -->
+<div class="coluna">
+
+<div class="card menu-card" data-target="mensagens">MENSAGEM RÁPIDA</div>
+<div class="links" id="mensagens">
+  <button class="btn-ferramenta" onclick="msgSaudacao('dia')">☀️ Bom dia</button>
+  <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">🌤 Boa tarde</button>
+  <button class="btn-ferramenta" onclick="msgSaudacao('noite')">🌙 Boa noite</button>
 </div>
 
-<button class="card" data-target="archer">ARCHER C20 / C5</button>
-<div class="links credencial" id="archer">
-  <div class="linha"><b>Archer C20:</b> #TcFcnM@2019* / admin / 2amt0j1t8</div>
-  <div class="linha"><b>Archer C5:</b> 2amt0j1t8</div>
 </div>
 
-<button class="card" data-target="vsol">V-SOL</button>
-<div class="links credencial" id="vsol">
-  <div class="linha"><b>User:</b> admin</div>
-  <div class="linha"><b>Senha:</b> admin / 2amt0j1t8 / stdONU101</div>
-</div>
+</main>
 
+<footer>FLASH SUPORTE • SISTEMA INTERNO</footer>
 
-      </div>
-      
-      <div class="card" data-target="OLT">OLT</div>
-      <div class="links" id="OLT">
-        <a href="#">OLT VLANS</a>
-        <button class="btn-ferramenta" onclick="abrir('https://vortxgroupsysten-bit.github.io/consulta-de-olt/')">📡 OLT IDENTIFICADOR</button>
-      </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-      <div class="card" data-target="Curso">CURSOS</div>
-      <div class="links" id="Curso">
-        <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/watch?v=NrZMQ0YkWKI&list=PL1HkL1MnPEeVMEVRqUqQIYTBEibXJDiYK')">Curso de Redes com MikroTik (Grátis)</button>
-      </div>
-    </div>
-
-    <div class="coluna">
-      <div class="card" data-target="monitor">MONITORAMENTO</div>
-      <div class="links" id="monitor">
-         <button class="btn-ferramenta" onclick="abrir('https://dashboard.lv.network/d/OaPGKlRGz/14700-tcf-telecom?orgId=109&refresh=5m&from=now-6h&to=now&timezone=browser&var-Grupo=TCF')">Trafego da rede</button>
-        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">Potencia ONU</button>
-        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/FI-GAjBZaa/9-servicos-de-internet-downdetector?orgId=1&refresh=1m')">DOWNDETECTOR</button>
-        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">ENERGIA OLT</button>
-        <button class="btn-ferramenta" onclick="abrir('https://zabbix.tcftelecom.com.br/zabbix.php?show=1&application=&name=&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&page=4&action=problem.view')">INCIDENTES</button>
-      </div>
-
-      <div class="card" data-target="mensagens">MENSAGEM RAPIDA</div>
-        <div class="links" id="mensagens">
-         <button class="btn-ferramenta" onclick="msgSaudacao('dia')">☀️ Bom dia</button>
-          <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">🌤 Boa tarde</button>
-         <button class="btn-ferramenta" onclick="msgSaudacao('noite')">🌙 Boa noite</button>
-        </div>
-
-
-      <div class="card" data-target="planos">PLANOS TCF</div>
-    </div>
-  </main>
-
-  <footer>FLASH SUPORTE • SISTEMA INTERNO</footer>
-
- <script>
-
-  function entrar() {
-    const nome = document.getElementById('nomeUsuario').value.trim();
+  window.entrar = () => {
+    const nome = nomeUsuario.value.trim();
     if (!nome) return;
-
     sessionStorage.setItem('usuarioNOC', nome);
-    document.getElementById('login-overlay').style.display = 'none';
-  }
+    login-overlay.style.display = 'none';
+  };
 
-  function verificarLogin() {
-    const nome = sessionStorage.getItem('usuarioNOC');
-    if (!nome) {
-      document.getElementById('login-overlay').style.display = 'flex';
-    } else {
-      document.getElementById('login-overlay').style.display = 'none';
-    }
-  }
+  login-overlay.style.display =
+    sessionStorage.getItem('usuarioNOC') ? 'none' : 'flex';
 
-  verificarLogin();
+  window.abrir = url => window.open(url, '_blank');
 
-  function abrir(url) {
-    window.open(url, '_blank', 'noopener');
-  }
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.onclick = () => {
+      const alvo = document.getElementById(card.dataset.target);
+      const aberto = alvo.classList.contains('show');
 
-  document.querySelectorAll('.card[data-target]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      const alvo = document.getElementById(id);
-
-      const jaAberto = alvo.classList.contains('show');
-
-      // fecha todos
-      document.querySelectorAll('.links').forEach(div => {
-        div.classList.remove('show');
-      });
-
-      // se não estava aberto, abre
-      if (!jaAberto) {
-        alvo.classList.add('show');
-      }
-    });
-  });
-
-  function msgSaudacao(periodo) {
-    const nome = sessionStorage.getItem('usuarioNOC') || 'Suporte Técnico';
-
-
-    const textos = {
-      dia:    `Bom dia, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      tarde:  `Boa tarde, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      noite:  `Boa noite, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`
+      document.querySelectorAll('.links').forEach(l => l.classList.remove('show'));
+      if (!aberto) alvo.classList.add('show');
     };
-
-    const mensagem = textos[periodo];
-    if (!mensagem) return;
-
-    navigator.clipboard.writeText(mensagem);
-    alert('Mensagem copiada!');
-  }
-
-  document.querySelectorAll('.links').forEach(links => {
-  links.addEventListener('click', e => {
-    e.stopPropagation();
   });
-});
 
+  document.querySelectorAll('.senha-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.getElementById(btn.dataset.alvo).classList.toggle('show');
+    };
+  });
+
+  window.msgSaudacao = periodo => {
+    const nome = sessionStorage.getItem('usuarioNOC');
+    const msgs = {
+      dia:`Bom dia, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
+      tarde:`Boa tarde, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
+      noite:`Boa noite, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`
+    };
+    navigator.clipboard.writeText(msgs[periodo]);
+    alert('Mensagem copiada!');
+  };
+
+});
 </script>
 
 </body>
