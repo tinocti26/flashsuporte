@@ -106,17 +106,27 @@
     <div class="coluna">
       <div class="card" onclick="toggleLinks('hub')">Hub Soft</div>
       <div class="links" id="hub">
-        <a href="#">HubSoft Principal</a>
-        <a href="#">Clientes</a>
-        <a href="#">Financeiro</a>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/dashboard')">HUB</button>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/agenda_tecnico')">Agenda técnico</button>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/ordem_servico/mapa')">mapa de OS</button>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/mapeamento/cliente')">mapa de cliente</button>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/cpe')">CPES e ONU</button>
+         <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/equipamento_conexao')">OLTS HUB</button>
       </div>
       
       <div class="card" onclick="toggleLinks('senha')">SENHAS</div>
       <div class="links" id="senha">
 
-        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
-        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
-        <button class="btn-ferramenta" onclick="abrir('#')"> NOME </button>
+        <button class="card" onclick="toggleLinks('hauwei')">HAUWEI</button>
+        <div class="links" class="credencial" id="hauwei">
+           <div class="linha"><b>User:</b> Epadmin / telecomadmin</div>
+           <div class="linha"><b>Senha:</b> 2amt0j1t8</div>
+        </div>   
+        <button class="card" onclick="toggleLinks('tplink')">TP-LINK</button>
+        <div class="links" class="credencial" id="tplink">
+           <div class="linha"><b>IP/</b> superadmin  </div>
+           <div class="linha"><b>Senha:</b> tcfadmin001   2amt0j1t8</div>
+        </div>  
 
       </div>
       
@@ -135,6 +145,7 @@
     <div class="coluna">
       <div class="card" onclick="toggleLinks('monitor')">MONITORAMENTO</div>
       <div class="links" id="monitor">
+        <button class="btn-ferramenta" onclick="abrir('https://dashboard.lv.network/d/OaPGKlRGz/14700-tcf-telecom?orgId=109&refresh=5m&from=now-6h&to=now&timezone=browser&var-Grupo=TCF')">Trafego da rede</button>
         <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">Potencia ONU</button>
         <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/FI-GAjBZaa/9-servicos-de-internet-downdetector?orgId=1&refresh=1m')">DOWNDETECTOR</button>
         <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">ENERGIA OLT</button>
@@ -145,7 +156,7 @@
     </div>
   </main>
 
-  <footer>NOC SUPORTE • SISTEMA INTERNO</footer>
+  <footer>FLASH SUPORTE • SISTEMA INTERNO</footer>
 
   <script>
     function toggleLinks(id) {
