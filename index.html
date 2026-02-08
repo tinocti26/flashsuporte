@@ -178,47 +178,62 @@ main {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  window.entrar = () => {
-    const nome = nomeUsuario.value.trim();
+  window.entrar = function () {
+    const nome = document.getElementById('nomeUsuario').value.trim();
     if (!nome) return;
+
     sessionStorage.setItem('usuarioNOC', nome);
-    login-overlay.style.display = 'none';
+    document.getElementById('login-overlay').style.display = 'none';
   };
 
-  login-overlay.style.display =
-    sessionStorage.getItem('usuarioNOC') ? 'none' : 'flex';
+  // verifica login ao carregar
+  if (sessionStorage.getItem('usuarioNOC')) {
+    document.getElementById('login-overlay').style.display = 'none';
+  } else {
+    document.getElementById('login-overlay').style.display = 'flex';
+  }
 
-  window.abrir = url => window.open(url, '_blank');
+  window.abrir = url => window.open(url, '_blank', 'noopener');
 
+  // MENUS PRINCIPAIS
   document.querySelectorAll('.menu-card').forEach(card => {
-    card.onclick = () => {
+    card.addEventListener('click', () => {
       const alvo = document.getElementById(card.dataset.target);
+      if (!alvo) return;
+
       const aberto = alvo.classList.contains('show');
 
       document.querySelectorAll('.links').forEach(l => l.classList.remove('show'));
       if (!aberto) alvo.classList.add('show');
-    };
+    });
   });
 
+  // SENHAS (independente)
   document.querySelectorAll('.senha-btn').forEach(btn => {
-    btn.onclick = () => {
-      document.getElementById(btn.dataset.alvo).classList.toggle('show');
-    };
+    btn.addEventListener('click', () => {
+      const alvo = document.getElementById(btn.dataset.alvo);
+      if (alvo) alvo.classList.toggle('show');
+    });
   });
 
-  window.msgSaudacao = periodo => {
-    const nome = sessionStorage.getItem('usuarioNOC');
-    const msgs = {
-      dia:`Bom dia, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      tarde:`Boa tarde, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      noite:`Boa noite, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`
+  // MENSAGEM RÁPIDA
+  window.msgSaudacao = function (periodo) {
+    const nome = sessionStorage.getItem('usuarioNOC') || 'Suporte Técnico';
+
+    const textos = {
+      dia: `Bom dia, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
+      tarde: `Boa tarde, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
+      noite: `Boa noite, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`
     };
-    navigator.clipboard.writeText(msgs[periodo]);
+
+    if (!textos[periodo]) return;
+    navigator.clipboard.writeText(textos[periodo]);
     alert('Mensagem copiada!');
   };
 
 });
 </script>
+
 
 </body>
 </html>
