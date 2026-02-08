@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -117,15 +117,46 @@
       <div class="card" onclick="toggleLinks('senha')">SENHAS</div>
       <div class="links" id="senha">
 
-        <button class="card" onclick="toggleLinks('hauwei')">HAUWEI</button>
-        <div class="links" class="credencial" id="hauwei">
-           <div class="linha"><b>User:</b> Epadmin / telecomadmin</div>
-           <div class="linha"><b>Senha:</b> 2amt0j1t8</div>
-        </div>   
-        <button class="card" onclick="toggleLinks('tplink')">TP-LINK</button>
-        <div class="links" class="credencial" id="tplink">
-           <div class="linha"><b>IP/</b> superadmin  </div>
-           <div class="linha"><b>Senha:</b> tcfadmin001   2amt0j1t8</div>
+        <button class="card" data-target="huawei">HUAWEI</button>
+          <div class="links credencial" id="huawei">
+          <div class="linha"><b>User:</b> Epadmin / telecomadmin</div>
+          <div class="linha"><b>Senha:</b> 2amt0j1t8</div>
+        </div>
+
+        <button class="card" data-target="tplink">TP-LINK</button>
+          <div class="links credencial" id="tplink">
+          <div class="linha"><b>User:</b> superadmin</div>
+          <div class="linha"><b>Senha:</b> tcfadmin001 / 2amt0j1t8</div>
+        </div>
+
+        <button class="card" data-target="datacom">DATACOM</button>
+          <div class="links credencial" id="datacom">
+          <div class="linha"><b>User:</b> admin / user</div>
+          <div class="linha"><b>Senha:</b> 2amt0j1t8 / #TcFcnM@2019*98</div>
+        </div>
+
+        <button class="card" data-target="stavix">STAVIX UNEE</button>
+        <div class="links credencial" id="stavix">
+          <div class="linha"><b>User:</b> admin / root</div>
+          <div class="linha"><b>Senha:</b> admin / 2amt0j1t8 / Changeme_123 / unee123</div>
+        </div>
+
+        <button class="card" data-target="multilaser">MULTILASER</button>
+        <div class="links credencial" id="multilaser">
+          <div class="linha"><b>User:</b> adminisp</div>
+          <div class="linha"><b>Senha:</b> adminisp</div>
+        </div>
+
+        <button class="card" data-target="archer">ARCHER C20 / C5</button>
+        <div class="links credencial" id="archer">
+          <div class="linha"><b>Archer C20:</b> #TcFcnM@2019* / admin / 2amt0j1t8</div>
+          <div class="linha"><b>Archer C5:</b> 2amt0j1t8</div>
+        </div>
+
+        <button class="card" data-target="vsol">V-SOL</button>
+        <div class="links credencial" id="vsol">
+          <div class="linha"><b>User:</b> admin</div>
+          <div class="linha"><b>Senha:</b> admin / 2amt0j1t8 / stdONU101</div>
         </div>  
 
       </div>
@@ -148,7 +179,7 @@
         <button class="btn-ferramenta" onclick="abrir('https://dashboard.lv.network/d/OaPGKlRGz/14700-tcf-telecom?orgId=109&refresh=5m&from=now-6h&to=now&timezone=browser&var-Grupo=TCF')">Trafego da rede</button>
         <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">Potencia ONU</button>
         <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/FI-GAjBZaa/9-servicos-de-internet-downdetector?orgId=1&refresh=1m')">DOWNDETECTOR</button>
-        <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">ENERGIA OLT</button>
+        <button class="btn-ferramenta" onclick="abrir('https://zabbix.tcftelecom.com.br/zabbix.php?show=1&application=&name=&inventory%5B0%5D%5Bfield%5D=type&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock&sortorder=DESC&age_state=0&show_suppressed=0&unacknowledged=0&compact_view=0&details=0&highlight_row=0&page=4&action=problem.view')">ENERGIA OLT</button>
       </div>
 
       <div class="card">Mensagens Rápidas</div>
@@ -159,7 +190,7 @@
   <footer>FLASH SUPORTE • SISTEMA INTERNO</footer>
 
   <script>
-    function toggleLinks(id) {
+     function toggleLinks(id) {
       const el = document.getElementById(id);
       el.style.display = el.style.display === 'flex' ? 'none' : 'flex';
     }
@@ -167,6 +198,23 @@
     function abrir(url) {
       window.open(url, '_blank');
     }
+
+     document.querySelectorAll('.card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      toggleLinks(id);
+    });
+  });
+
+  function toggleLinks(id) {
+    document.querySelectorAll('.links').forEach(div => {
+      if (div.id === id) {
+        div.classList.toggle('show');
+      } else {
+        div.classList.remove('show');
+      }
+    });
+  }
   </script>
 </body>
 </html>
