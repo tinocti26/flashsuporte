@@ -325,13 +325,25 @@ body{
 <!-- MENSAGENS -->
 <div class="painel" id="mensagens">
   <h2 class="text-3xl md:text-5xl font-bold mb-4">Mensagens automáticas</h2>
+  <h3 class="text-3xl md:text-5xl font-bold mb-4">Agendamento</h3>
+    <div class="container">
+      <div class="coluna">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">saudações</h2>
+      <button class="btn-ferramenta" onclick="msgSaudacao('diaA')">Bom dia</button>
+      <button class="btn-ferramenta" onclick="msgSaudacao('tardeA')">Boa tarde</button>   
+      <button class="btn-ferramenta" onclick="msgSaudacao('noiteA')">Boa noite</button>
+      </div>
+    </div>
+
+    <h2 class="text-3xl md:text-5xl font-bold mb-4">Suporte</h2>
   <div class="container">
     <div class="coluna">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">saudações</h2>
       <button class="btn-ferramenta" onclick="msgSaudacao('dia')">Bom dia</button>
-      <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">Boa tarde</button>   
+      <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">Boa tarde</button> 
+      <button class="btn-ferramenta" onclick="msgSaudacao('noite')">Boa noite</button>  
     </div>
     <div class="coluna">
-      <button class="btn-ferramenta" onclick="msgSaudacao('noite')">Boa noite</button>
       <button class="btn-ferramenta" onclick="msgSaudacao('rompimento')">Rompimento</button>
     </div>
   </div>
@@ -397,7 +409,10 @@ function msgSaudacao(periodo){
     dia:`Bom dia, meu nome é ${nome}, sou do suporte técnico.`,
     tarde:`Boa tarde, meu nome é ${nome}, sou do suporte técnico.`,
     noite:`Boa noite, meu nome é ${nome}, sou do suporte técnico.`,
-    rompimento:'Olá! Identificamos um rompimento na rede em sua região. Já encaminhamos um técnico ao local e estamos trabalhando para normalizar o serviço o mais rápido possível. Agradecemos a compreensão.'
+    rompimento:'Olá! Identificamos um rompimento na rede em sua região. Já encaminhamos um técnico ao local e estamos trabalhando para normalizar o serviço o mais rápido possível. Agradecemos a compreensão.',
+    diaA:`Bom dia, aqui é ${nome} do setor de agendamentos da TCF Telecom`,
+    tardeA:`Boa tarde, aqui é ${nome} do setor de agendamentos da TCF Telecom`,
+    noiteA:`boa noite , aqui é ${nome} do setor de agendamentos da TCF Telecom`
   };
   navigator.clipboard.writeText(textos[periodo]);
   alert("Mensagem copiada!");
