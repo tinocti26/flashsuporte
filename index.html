@@ -8,112 +8,176 @@
 <style>
 * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
 
-body {
-  margin: 0;
-  min-height: 100vh;
+body{
+  margin:0;
+  background:#0b0f14;
+  color:#e5e7eb;
+}
+
+/* LOGIN */
+#login-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.login-box{
+  background:#020617;
+  border:1px solid #22d3ee;
+  padding:30px;
+  border-radius:12px;
+  width:300px;
+  text-align:center;
+}
+
+.login-box input{
+  width:100%;
+  padding:10px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #22d3ee;
+  background:#0b0f14;
+  color:#e5e7eb;
+}
+
+/* LAYOUT */
+.layout{
+  display:flex;
+  height:100vh;
+}
+
+/* MENU LATERAL */
+.menu{
+  width:220px;
+  background:#020617;
+  border-right:2px solid #22d3ee;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.menu h2{
+  text-align:center;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.menu-item{
+  padding:12px;
+  border:1px solid #22d3ee;
+  border-radius:6px;
+  cursor:pointer;
+  text-align:center;
+  background:#020617;
+}
+
+.menu-item:hover{
+  box-shadow:0 0 10px rgba(34,211,238,.6);
+}
+
+/* CONTEUDO */
+.conteudo{
+  flex:1;
+  padding:30px;
+  overflow:auto;
+}
+
+.painel{
+  display:none;
+  flex-direction:column;
+  gap:15px;
+}
+
+.painel.show{
+  display:flex;
+}
+
+/* CARDS INTERNOS */
+.card{
+  border:1px solid #22d3ee;
+  padding:15px;
+  border-radius:8px;
+  background:#020617;
+  cursor:pointer;
+  text-align:center;
+  transition: all 0.25s ease;
+}
+
+.card:hover{
+  background:#0f172a;
+  transform: translateY(-5px);
+}
+
+.links{
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  padding:10px;
+  border-left:2px solid #22d3ee;
+}
+
+.links.show{
+  display:flex;
+}
+
+.btn-ferramenta{
+  width: 100%;
+  background:#020617;
+  border:1px solid #22d3ee;
+  padding:8px;
+  border-radius:4px;
+  color:#67e8f9;
+  cursor:pointer;
+  margin:5px;
+  transition: all 0.25s ease;
+}
+
+.btn-ferramenta:hover{
+  background:#0f172a;
+  transform: translateY(-5px);
+}
+
+.credencial{
+  background:rgba(255,255,255,.03);
+  padding:8px;
+  border-radius:8px;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
-  background: #0b0f14;
-  color: #e5e7eb;
-}
-
-header, footer {
-  border-top: 2px solid #22d3ee;
-  border-bottom: 2px solid #22d3ee;
-  text-align: center;
-  padding: 14px;
-  font-weight: bold;
-  background: #020617;
-  color: #f8fafc;
-}
-
-main {
-  flex: 1;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 20px; /* espaço entre colunas */
 }
 
 .coluna {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.card {
-  border: 1px solid #22d3ee;
-  padding: 26px;
-  text-align: center;
-  background: #020617;
-  cursor: pointer;
-  border-radius: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.card:hover {
-  box-shadow: 0 0 14px rgba(34,211,238,.6);
-}
-
-.links {
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  padding: 15px;
-  background: #020617;
-  border-left: 2px solid #22d3ee;
-  border-radius: 0 0 8px 8px;
-}
-
-.links.show { display: flex; }
-
-.credencial {
-  background: rgba(255,255,255,.03);
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-
-.linha { font-size: 14px; }
-
-.btn-ferramenta {
+  flex: 1; /* todas ficam com o mesmo tamanho */
   background: #1e293b;
-  border: 1px solid #22d3ee;
-  padding: 8px 12px;
-  border-radius: 4px;
-  color: #67e8f9;
-  cursor: pointer;
+  padding: 15px;
+  border-radius: 8px;
 }
 
-#login-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(2,6,23,.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+.bloco{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
-.login-box {
-  background: #020617;
-  border: 1px solid #22d3ee;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
-}
 
-.login-box input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #22d3ee;
-  background: #0b0f14;
-  color: #e5e7eb;
-}
 </style>
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -122,118 +186,166 @@ main {
 <div id="login-overlay">
   <div class="login-box">
     <h2>NOC SUPORTE</h2>
-    <p>Informe seu nome</p>
     <input id="nomeUsuario" placeholder="Seu nome">
     <button onclick="entrar()">Entrar</button>
   </div>
 </div>
 
-<header>NOC SUPORTE</header>
+<div class="layout">
 
-<main>
-
-<!-- COLUNA ESQUERDA -->
-<div class="coluna">
-
-<div class="card menu-card" data-target="hub">HUB SOFT</div>
-<div class="links" id="hub">
-  <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/dashboard')">HUB</button>
+<!-- MENU -->
+<div class="menu">
+  <h2>NOC SUPORTE</h2>
+  <div class="menu-item" onclick="abrirPainel('hub')">HubSoft</div>
+  <div class="menu-item" onclick="abrirPainel('senhas')">Senhas</div>
+  <div class="menu-item" onclick="abrirPainel('monitor')">Monitoramento</div>
+  <div class="menu-item" onclick="abrirPainel('mensagens')">Mensagens</div>
+  <div class="menu-item" onclick="abrirPainel('cursos')">Cursos</div>
 </div>
 
-<div class="card menu-card" data-target="senha">SENHAS</div>
-<div class="links" id="senha">
+<!-- CONTEUDO -->
+<div class="conteudo">
 
-<button class="card senha-btn" data-alvo="huawei">HUAWEI</button>
-<div class="links credencial" id="huawei">
-  <div class="linha"><b>User:</b> Epadmin / telecomadmin</div>
-  <div class="linha"><b>Senha:</b> 2amt0j1t8</div>
+<!-- HUB -->
+<div class="painel" id="hub">
+  <div class="container">
+    <div class="coluna"> 
+       <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/dashboard')">Dashboard💻</button>
+       <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/agenda_tecnico')">Agenda técnico👲</button>
+    </div>
+    <div class="coluna">
+       <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/atendimento_os/ordem_servico/mapa')">Mapa de OS🗺🚩</button>
+        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/mapeamento/cliente')">Mapa de cliente🗺</button>
+    </div>
+    <div class="coluna">
+        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/cpe')">CPES e ONU</button>
+        <button class="btn-ferramenta" onclick="abrir('https://tcftelecom.hubsoft.com.br/rede/rede/equipamento_conexao')">OLTS HUB</button>
+    </div>
+  </div>  
 </div>
 
-<button class="card senha-btn" data-alvo="tplink">TP-LINK</button>
-<div class="links credencial" id="tplink">
-  <div class="linha"><b>User:</b> superadmin</div>
-  <div class="linha"><b>Senha:</b> tcfadmin001 / 2amt0j1t8</div>
+<!-- SENHAS -->
+<div class="painel" id="senhas">
+  <div class="container">
+    <div class="coluna">
+      <div class="card senha-btn" data-alvo="huawei">HUAWEI</div>
+        <div class="links credencial" id="huawei">
+        User: Epadmin / telecomadmin<br>
+        Senha: 2amt0j1t8
+       </div>
+
+    </div>
+    <div class="coluna">
+    <div class="card senha-btn" data-alvo="tplink">TP-LINK</div>
+      <div class="links credencial" id="tplink">
+      User: superadmin<br>
+      Senha: tcfadmin001 / 2amt0j1t8
+      </div>
+    </div>
+  </div>
+   <div class="container">
+    <div class="coluna">
+      <div class="card senha-btn" data-alvo="#">#</div>
+        <div class="links credencial" id="#">
+         User: ###<br>
+          Senha: ### / ###
+        </div>
+    </div>
+    <div class="coluna">
+    <div class="card senha-btn" data-alvo="#">#</div>
+      <div class="links credencial" id="#">
+      User: ###<br>
+      Senha: ### / ###
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MONITORAMENTO -->
+<div class="painel" id="monitor">
+  <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br')">Grafana</button>
+</div>
+
+<!-- MENSAGENS -->
+<div class="painel" id="mensagens">
+  <div class="container">
+    <div class="coluna">
+      <button class="btn-ferramenta" onclick="msgSaudacao('dia')">Bom dia</button>
+      <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">Boa tarde</button>   
+    </div>
+    <div class="coluna">
+      <button class="btn-ferramenta" onclick="msgSaudacao('noite')">Boa noite</button>
+      <button class="btn-ferramenta" onclick="msgSaudacao('rompimento')">Rompimento</button>
+    </div>
+  </div>
+</div>
+
+<div class="painel" id="cursos">
+  <div class="container">
+    <div class="coluna">
+      <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/watch?v=NrZMQ0YkWKI&list=PL1HkL1MnPEeVMEVRqUqQIYTBEibXJDiYK')">Curso de Redes com MikroTik!</button>
+      <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/watch?v=QkMbqL8QD9w&list=PLHz_AreHm4dkd4lr9G0Up-W-YaHYdTDuP')">Entenda a rede de um cliente</button>
+    </div>  
+    <div class="coluna">
+      <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/watch?v=KkcTAKrmmT4&list=PLruxV6Ot1BiQ_PbRYh4P5E7-RujzWeSJh')">Curso de Redes com MikroTik!</button>
+      <button class="btn-ferramenta" onclick="abrir('https://www.youtube.com/watch?v=5pFJPVg5nbE&list=PL6BTdBqzl1oY9EQ4151rGNEbATMNgX8vK')">Curso de Redes de Computadores Básico Mão na Massa - O Packet Tracer</button>
+    </div>  
+  </div>
 </div>
 
 </div>
-
 </div>
 
-<!-- COLUNA DIREITA -->
-<div class="coluna">
 
-<div class="card menu-card" data-target="mensagens">MENSAGEM RÁPIDA</div>
-<div class="links" id="mensagens">
-  <button class="btn-ferramenta" onclick="msgSaudacao('dia')">☀️ Bom dia</button>
-  <button class="btn-ferramenta" onclick="msgSaudacao('tarde')">🌤 Boa tarde</button>
-  <button class="btn-ferramenta" onclick="msgSaudacao('noite')">🌙 Boa noite</button>
-</div>
 
-</div>
 
-</main>
 
-<footer>FLASH SUPORTE • SISTEMA INTERNO</footer>
+
+
+
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
 
-  window.entrar = function () {
-    const nome = document.getElementById('nomeUsuario').value.trim();
-    if (!nome) return;
+function entrar(){
+  const nome=document.getElementById('nomeUsuario').value.trim();
+  if(!nome) return;
+  sessionStorage.setItem('usuarioNOC',nome);
+  document.getElementById('login-overlay').style.display='none';
+}
 
-    sessionStorage.setItem('usuarioNOC', nome);
-    document.getElementById('login-overlay').style.display = 'none';
-  };
+if(sessionStorage.getItem('usuarioNOC')){
+  document.getElementById('login-overlay').style.display='none';
+}
 
-  // verifica login ao carregar
-  if (sessionStorage.getItem('usuarioNOC')) {
-    document.getElementById('login-overlay').style.display = 'none';
-  } else {
-    document.getElementById('login-overlay').style.display = 'flex';
-  }
+function abrir(url){
+  window.open(url,'_blank');
+}
 
-  window.abrir = url => window.open(url, '_blank', 'noopener');
+function abrirPainel(id){
+  document.querySelectorAll('.painel').forEach(p=>p.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
 
-  // MENUS PRINCIPAIS
-  document.querySelectorAll('.menu-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const alvo = document.getElementById(card.dataset.target);
-      if (!alvo) return;
-
-      const aberto = alvo.classList.contains('show');
-
-      document.querySelectorAll('.links').forEach(l => l.classList.remove('show'));
-      if (!aberto) alvo.classList.add('show');
-    });
+document.querySelectorAll('.senha-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const alvo=document.getElementById(btn.dataset.alvo);
+    alvo.classList.toggle('show');
   });
-
-  // SENHAS (independente)
-  document.querySelectorAll('.senha-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const alvo = document.getElementById(btn.dataset.alvo);
-      if (alvo) alvo.classList.toggle('show');
-    });
-  });
-
-  // MENSAGEM RÁPIDA
-  window.msgSaudacao = function (periodo) {
-    const nome = sessionStorage.getItem('usuarioNOC') || 'Suporte Técnico';
-
-    const textos = {
-      dia: `Bom dia, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      tarde: `Boa tarde, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`,
-      noite: `Boa noite, meu nome é ${nome}, sou do suporte técnico e darei continuidade ao seu atendimento.`
-    };
-
-    if (!textos[periodo]) return;
-    navigator.clipboard.writeText(textos[periodo]);
-    alert('Mensagem copiada!');
-  };
-
 });
-</script>
 
+function msgSaudacao(periodo){
+  const nome=sessionStorage.getItem('usuarioNOC')||'Suporte Técnico';
+  const textos={
+    dia:`Bom dia, meu nome é ${nome}, sou do suporte técnico.`,
+    tarde:`Boa tarde, meu nome é ${nome}, sou do suporte técnico.`,
+    noite:`Boa noite, meu nome é ${nome}, sou do suporte técnico.`,
+    rompimento:'Olá! Identificamos um rompimento na rede em sua região. Já encaminhamos um técnico ao local e estamos trabalhando para normalizar o serviço o mais rápido possível. Agradecemos a compreensão.'
+  };
+  navigator.clipboard.writeText(textos[periodo]);
+  alert("Mensagem copiada!");
+}
+
+</script>
 
 </body>
 </html>
