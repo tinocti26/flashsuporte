@@ -304,11 +304,19 @@ body{
   <h2 class="text-3xl md:text-5xl font-bold mb-4">Página em fase de desenvolvimento</h2>
   <div class="container">
     <div class="coluna">
-        <button class="btn-ferramenta" onclick="abrir('#')">#</button>
-    <button class="btn-ferramenta" onclick="abrir('#')">#</button>
-    <button class="btn-ferramenta" onclick="abrir('#')">#</button>
-    <button class="btn-ferramenta" onclick="abrir('#')">#</button>
-    </div>  
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">GPON</h2>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/b_-hdzAnkdawdwa/6-gpon-causa-de-desconexao-das-onus?orgId=1&refresh=1m')">CAUSA DE DESCONEXÃO</button>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/ETSzqH9iWdawd/6-gpon-contagem-de-onus-por-pon?orgId=1&refresh=5m')">CONTAGEM DE ONUS POR PON</button>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/pR2b9Zsiaqa/6-gpon-potencia-das-onus?orgId=1&refresh=15m')">POTÊNCIA DAS ONUS</button>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/IMw6L74Dz/6-gpon-sinal-alto?orgId=1&refresh=15m')">SINAL ALTO</button>
+    </div>
+    <div class="coluna">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">VMS E ENERGIAS OLTS</h2>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/oKasylFHz/8-energia-ping-e-energia?orgId=1&refresh=1m')">SINAL ALTO</button>
+      <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br/d/l88Zhfjnzefwefw/11-servidores-vmware-esxi?orgId=1')">VMSMONITOR</button>
+
+    </div>
+    
   </div>
   <h2 class="text-3xl md:text-5xl font-bold mb-4">frase</h2>
   <button class="btn-ferramenta" onclick="abrir('https://grafana.tcftelecom.com.br')">Grafana</button>
